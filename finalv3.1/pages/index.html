@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeUp - 生活向上</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="loading-screen">
+    <div class="loading-spinner">
+      <div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <img src="../images/logo.png" width="100" alt="LifeUp Logo"> LifeUp
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">首頁</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
+          <li class="nav-item"><a class="nav-link" href="action.html">參與行動</a></li>
+          <li class="nav-item"><a class="nav-link" href="team.html">團隊成員</a></li>
+          <li class="nav-item"><a class="btn btn-primary text-white ms-3" href="donate.html">立即捐款</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="hero hero-index text-center">
+    <h1 class="display-3 fw-bold">生活向上，LifeUp！</h1>
+    <p class="lead fs-4">一起響應聯合國 SDG 1「消除貧窮」，為世界帶來希望</p>
+    <a href="#donate" class="btn btn-light btn-lg mt-4">我要幫助</a>
+  </div>
+  <section id="about-intro">
+    <div class="container" data-aos="fade-up">
+      <h2 class="section-title">關於 LifeUp</h2>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <p class="fs-5">我們致力於推動社會正義，透過倡議、行動與連結，提升公眾對貧窮問題的關注與參與。我們的使命是讓每個人都能生活向上。</p>
+          <ul class="list-unstyled fs-5">
+            <li class="list-item">支援社區發展</li>
+            <li class="list-item">與 NGO 協作推動改革</li>
+            <li class="list-item">提供教育與就業資源</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <img src="../images/volunteer.jpg" class="impact-img" alt="志工參與" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="issues" class="bg-light">
+    <div class="container" data-aos="fade-right">
+      <h2 class="section-title">消除貧窮的挑戰</h2>
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <img src="../images/poverty.jpeg" class="impact-img" alt="貧窮議題" loading="lazy">
+        </div>
+        <div class="col-md-6">
+          <p class="fs-5">全球仍有超過 7 億人每日生活費不到 1.90 美元。這不只是經濟議題，更是人權與尊嚴的挑戰。</p>
+          <p class="fs-5">LifeUp 致力於呼籲全球關注，並與在地組織合作，推動實質改變。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="action">
+    <div class="container" data-aos="zoom-in">
+      <h2 class="section-title">一起參與行動</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <a href="volunteer.html" class="text-decoration-none"> <!-- 修改為 volunteer.html -->
+            <div class="card border-0 shadow-sm h-100">
+              <img src="../images/join.png" class="card-img-top" alt="加入志工" loading="lazy">
+              <div class="card-body d-flex flex-column">
+                <h4 class="card-title text-dark">加入志工</h4>
+                <p class="card-text text-muted flex-grow-1">透過時間與專長貢獻社會，成為改變的一份子。</p>
+                <span class="btn btn-outline-success mt-2">了解更多 →</span> <!-- 如果父級 a 已經是 volunteer.html，這裡可以是非 a 標籤 -->
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="404.html" class="text-decoration-none"> <!-- 直接指向 404 -->
+            <div class="card border-0 shadow-sm h-100">
+              <img src="../images/share.jpg" class="card-img-top" alt="分享與宣傳" loading="lazy">
+              <div class="card-body d-flex flex-column">
+                <h4 class="card-title text-dark">分享與宣傳</h4>
+                <p class="card-text text-muted flex-grow-1">透過社群媒體擴散影響力，讓更多人關注貧窮議題。</p>
+                <span class="btn btn-outline-success mt-2">參與宣傳 →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="404.html" class="text-decoration-none"> <!-- 直接指向 404 -->
+            <div class="card border-0 shadow-sm h-100">
+              <img src="../images/project.jpg" class="card-img-top" alt="參與社區專案" loading="lazy">
+              <div class="card-body d-flex flex-column">
+                <h4 class="card-title text-dark">參與社區專案</h4>
+                <p class="card-text text-muted flex-grow-1">和我們一起參與本地貧窮解決方案的實踐。</p>
+                <span class="btn btn-outline-success mt-2">查看專案 →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="impact" class="bg-light">
+    <div class="container" data-aos="fade-up">
+      <h2 class="section-title">我們的影響力</h2>
+      <div class="row text-center">
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="number-wrapper">
+            <h3 class="fw-bold text-success" data-value="1200" data-prefix="+">+1,200</h3>
+            <p>受益家庭</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="number-wrapper">
+            <h3 class="fw-bold text-success" data-value="85" data-suffix="%">85%</h3>
+            <p>志工滿意度</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="number-wrapper">
+            <h3 class="fw-bold text-success" data-value="300" data-prefix="+">300+</h3>
+            <p>社區專案完成</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="faq">
+    <div class="container" data-aos="fade-up">
+      <h2 class="section-title">常見問題</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq1-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1-collapse">
+                  捐款會如何使用？
+                </button>
+              </h2>
+              <div id="faq1-collapse" class="accordion-collapse collapse show" aria-labelledby="faq1-header" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <p class="mb-0">所有捐款將用於：</p>
+                  <ul class="mt-2">
+                    <li>本地社區發展專案</li>
+                    <li>弱勢家庭教育資源</li>
+                    <li>就業培訓計畫</li>
+                    <li>緊急救助基金</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq2-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-collapse">
+                  我可以如何成為志工？
+                </button>
+              </h2>
+              <div id="faq2-collapse" class="accordion-collapse collapse" aria-labelledby="faq2-header" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <p class="mb-0">成為志工的步驟：</p>
+                  <ol class="mt-2">
+                    <li>點擊本頁「參與行動」區塊的「加入志工」或導覽列「參與行動」</li>
+                    <li>填寫基本資料與興趣專長</li>
+                    <li>等待專人聯繫安排面談</li>
+                    <li>參加志工培訓課程</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="donate" class="bg-warning bg-opacity-25">
+    <div class="container" data-aos="zoom-in">
+      <h2 class="section-title">支持我們的行動</h2>
+      <p class="text-center fs-5">您的每一份捐款，都將轉化為改變的力量。</p>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card shadow-sm">
+            <div class="card-body p-4">
+              <form id="donationForm" novalidate>
+                <div class="mb-3">
+                    <label for="donateAmount" class="form-label">捐款金額（NT$）</label>
+                    <input type="number" class="form-control form-control-lg" id="donateAmount" placeholder="請輸入金額" min="100" step="100" oninput="this.value = this.value < 0 ? 0 : this.value" required>
+                    <small class="form-field-message"></small>
+                </div>
+                <div class="mb-3 text-center quick-amount-buttons">
+                    <button type="button" class="btn btn-outline-secondary quick-amount" data-amount="100">NT$100</button>
+                    <button type="button" class="btn btn-outline-secondary quick-amount" data-amount="500">NT$500</button>
+                    <button type="button" class="btn btn-outline-secondary quick-amount" data-amount="1000">NT$1000</button>
+                </div>
+                <div class="mb-3">
+                  <label for="name" class="form-label">姓名</label>
+                  <input type="text" class="form-control" id="name" placeholder="請輸入姓名" required>
+                  <small class="form-field-message"></small>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">聯絡信箱</label>
+                  <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                  <small class="form-field-message"></small>
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">留言</label>
+                  <textarea class="form-control" id="message" rows="3" placeholder="請分享您的想法（選填）"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100">確認捐款</button>
+                <div id="formSubmissionMessage" class="mt-3"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">© 2025 LifeUp | 聯絡信箱：<a href="mailto:LifeUp.com.tw@gmail.com" class="text-white text-decoration-underline">LifeUp.com.tw@gmail.com</a></p>
+    </div>
+  </footer>
+  <a href="#" class="back-to-top" aria-label="返回頂部">↑</a>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

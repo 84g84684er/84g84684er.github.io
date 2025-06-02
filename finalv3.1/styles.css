@@ -1,0 +1,402 @@
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: #fafafa;
+  position: relative;
+}
+section {
+  padding: 80px 0;
+}
+.section-title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #2E8B57;
+  animation: fadeInDown 1s ease;
+}
+.btn-primary {
+  background-color: #FF8C42;
+  border: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary:hover {
+  background-color: #e67e30;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+.card {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: none;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2E8B57;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 70%;
+}
+.nav-link.active::after {
+  width: 70%;
+  background-color: #FF8C42;
+}
+.nav-link:hover {
+  color: #2E8B57;
+}
+footer {
+  background-color: #2E8B57;
+  color: white;
+  padding: 20px 0;
+}
+footer a {
+  color: white;
+  transition: opacity 0.3s ease;
+}
+footer a:hover {
+  opacity: 0.8;
+  color: white !important;
+}
+.form-control {
+  border: 2px solid #e9ecef;
+  padding: 0.8rem;
+  transition: all 0.3s ease;
+}
+.form-control:focus {
+  border-color: #2E8B57;
+  box-shadow: 0 0 0 0.2rem rgba(46, 139, 87, 0.25);
+}
+.form-label {
+  font-weight: 600;
+  color: #2E8B57;
+}
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2E8B57;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  animation: spinner-rotate 2s linear infinite;
+}
+.loading-spinner div {
+  width: 12px;
+  height: 12px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  position: absolute;
+  animation: dot-pulse-color 1.2s ease-in-out infinite;
+}
+.loading-spinner div:nth-child(1) { top: 6px;  left: 24px; animation-delay: -1.05s; }
+.loading-spinner div:nth-child(2) { top: 9.95px; left: 40.05px; animation-delay: -0.9s; }
+.loading-spinner div:nth-child(3) { top: 24px; left: 42px; animation-delay: -0.75s; }
+.loading-spinner div:nth-child(4) { top: 40.05px; left: 40.05px; animation-delay: -0.6s; }
+.loading-spinner div:nth-child(5) { top: 42px; left: 24px; animation-delay: -0.45s; }
+.loading-spinner div:nth-child(6) { top: 40.05px; left: 7.95px; animation-delay: -0.3s; }
+.loading-spinner div:nth-child(7) { top: 24px; left: 6px; animation-delay: -0.15s; }
+.loading-spinner div:nth-child(8) { top: 9.95px; left: 7.95px; animation-delay: 0s; }
+@keyframes spinner-rotate { 100% { transform: rotate(360deg); } }
+@keyframes dot-pulse-color { 0%, 100% { transform: scale(0.7); background-color: #FFFFFF; opacity: 0.6; } 50% { transform: scale(1.1); background-color: #FF8C42; opacity: 1; } }
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.spinner-border { /* 用於 EmailJS 提交按鈕 */
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.15em;
+}
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+}
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+.hero {
+  color: white;
+  padding: 120px 20px;
+  text-align: center;
+}
+.hero h1 {
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+.hero-index {
+  background: linear-gradient(rgba(46, 139, 87, 0.7), rgba(46, 139, 87, 0.5)), url('https://source.unsplash.com/1600x600/?hope,community') center/cover no-repeat;
+}
+.hero-volunteer {
+  background: linear-gradient(rgba(46, 139, 87, 0.7), rgba(46, 139, 87, 0.5)), url('../images/join.jpg') center/cover no-repeat;
+}
+.hero-about {
+   background: linear-gradient(rgba(46, 139, 87, 0.7), rgba(46, 139, 87, 0.5)), url('https://source.unsplash.com/1600x600/?community') center/cover no-repeat;
+}
+.impact-img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.impact-img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.dropdown-item:hover {
+  background-color: rgba(46, 139, 87, 0.1);
+  color: #2E8B57;
+  transform: translateX(5px);
+}
+.nav-link.dropdown-toggle::after {
+  transition: transform 0.3s ease;
+}
+.show .nav-link.dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+.dropdown-toggle::after {
+  margin-left: 0.5em;
+}
+.number-wrapper {
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+.number-wrapper:hover {
+  transform: scale(1.05);
+}
+.number-wrapper .text-success {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+@keyframes numberPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.number-wrapper h3 {
+  animation: numberPop 0.5s ease-out forwards;
+}
+
+.accordion-item {
+  border: none;
+  margin-bottom: 1rem;
+  background: transparent;
+}
+.accordion-button {
+  background-color: white;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  font-weight: 600;
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+}
+.accordion-button:not(.collapsed) {
+  background-color: #2E8B57;
+  color: white;
+}
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(46, 139, 87, 0.25);
+}
+.accordion-button::after {
+  background-size: 1.2rem;
+  transition: transform 0.35s ease-in-out;
+}
+.accordion-button:not(.collapsed)::after {
+  filter: brightness(0) invert(1);
+}
+.accordion-body {
+  background-color: white;
+  border-radius: 0 0 8px 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.accordion-button:hover {
+  background-color: rgba(46, 139, 87, 0.1);
+}
+.accordion-button:not(.collapsed):hover {
+  background-color: #247347;
+}
+
+.accordion-collapse {
+  transition: max-height 0.35s ease-in-out, opacity 0.3s ease-in-out;
+  overflow: hidden;
+}
+.accordion-collapse:not(.show) {
+  max-height: 0;
+  opacity: 0;
+}
+.accordion-collapse.show {
+  max-height: 500px; /* 確保此值足夠大以顯示所有內容 */
+  opacity: 1;
+}
+.accordion-collapse.collapsing {
+  max-height: none; /* 或者一個非常大的值 */
+  transition: height 0.35s ease-in-out; /* Bootstrap 默認 */
+}
+
+
+.content-block {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+.content-block.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.list-item {
+  padding: 10px 0;
+  position: relative;
+  padding-left: 30px;
+}
+.list-item:before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #2E8B57;
+}
+.quick-amount-buttons .btn {
+  margin: 0.25rem;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #FF8C42;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+  z-index: 1000;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.back-to-top:hover {
+  background-color: #e67e30;
+  transform: scale(1.1);
+}
+.back-to-top.show {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===== 自訂表單欄位錯誤訊息 (從右滑入) ===== */
+.form-field-message {
+  font-size: 0.875em;
+  margin-top: 0.25rem;
+  display: block;
+  min-height: 1.2em;
+  color: #dc3545; /* 默認紅色 */
+  opacity: 0;
+  transform: translateX(20px); /* 從右滑入 */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.form-field-message.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.form-field-message.form-message-success { /* 如果將來有成功訊息 */
+    color: #198754;
+}
+/* ===== 結束自訂表單 ===== */
+
+
+#formSubmissionMessage { /* 全局表單提交訊息 */
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+#formSubmissionMessage.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+#formSubmissionMessage.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+}
+#formSubmissionMessage.error {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+}
+
+/* 自訂驗證時的表單控制項邊框 */
+.form-control.is-invalid {
+    border-color: #dc3545 !important; /* Bootstrap danger color */
+}
+.form-control.is-valid {
+    border-color: #198754 !important; /* Bootstrap success color */
+}
+
+/* 不需要再嘗試隱藏瀏覽器預設驗證提示的 CSS hack，因為 novalidate 會處理 */
+/*
+input:invalid, textarea:invalid, select:invalid {
+    box-shadow: none !important;
+}
+input::-webkit-validation-bubble-message,
+textarea::-webkit-validation-bubble-message,
+select::-webkit-validation-bubble-message {
+    display: none !important;
+}
+*/
