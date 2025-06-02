@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>加入志工 - LifeUp</title>
+  <link rel="icon" href="../images/logo.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="loading-screen">
+  <div class="loading-spinner">
+    <div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div>
+  </div>
+</div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <img src="../images/logo.png" width="100" alt="LifeUp Logo"> LifeUp
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
+          <li class="nav-item"><a class="nav-link active" href="action.html">參與行動</a></li>
+          <li class="nav-item"><a class="nav-link" href="team.html">團隊成員</a></li>
+          <li class="nav-item"><a class="btn btn-primary text-white ms-3" href="donate.html">立即捐款</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="hero hero-volunteer text-center">
+    <h1 class="display-3 fw-bold">成為志工</h1>
+    <p class="lead fs-4">用行動創造改變，一起為社會盡一份心力</p>
+  </div>
+  <section class="py-5">
+    <div class="container" data-aos="fade-up">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-body p-4">
+              <h4 class="card-title mb-4 text-center section-title" style="font-size: 1.75rem; margin-bottom: 20px !important;">志工申請表</h4>
+              <form id="volunteerForm" novalidate>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="name" class="form-label">姓名</label>
+                    <input type="text" class="form-control" id="name" required>
+                    <small class="form-field-message"></small>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="age" class="form-label">年齡 (需滿12歲)</label>
+                    <input type="number" class="form-control" id="age" min="12" required>
+                    <small class="form-field-message"></small>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">電子郵件</label>
+                  <input type="email" class="form-control" id="email" required>
+                  <small class="form-field-message"></small>
+                </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label">聯絡電話</label>
+                  <input type="tel" class="form-control" id="phone" required>
+                  <small class="form-field-message"></small>
+                </div>
+                <div class="mb-3">
+                  <label for="availability" class="form-label">可投入時間</label>
+                  <select class="form-select" id="availability" required>
+                    <option value="" disabled selected>請選擇</option>
+                    <option value="平日">平日</option>
+                    <option value="假日">假日</option>
+                    <option value="平日與假日皆可">平日與假日皆可</option>
+                  </select>
+                  <small class="form-field-message"></small>
+                </div>
+                <div class="mb-3">
+                  <label for="skills" class="form-label">專長與興趣</label>
+                  <textarea class="form-control" id="skills" rows="3" placeholder="例如：教學、設計、活動策劃、翻譯等" required></textarea>
+                  <small class="form-field-message"></small>
+                </div>
+                <div class="mb-3">
+                  <label for="motivation" class="form-label">為什麼想加入我們？</label>
+                  <textarea class="form-control" id="motivation" rows="3" placeholder="請簡述您的動機" required></textarea>
+                  <small class="form-field-message"></small>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100">提交申請</button>
+                <div id="formSubmissionMessage" class="mt-3"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">© 2025 LifeUp | 聯絡信箱：<a href="mailto:LifeUp.com.tw@gmail.com" class="text-white text-decoration-underline">LifeUp.com.tw@gmail.com</a></p>
+    </div>
+  </footer>
+  <a href="#" class="back-to-top" aria-label="返回頂部">↑</a>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
