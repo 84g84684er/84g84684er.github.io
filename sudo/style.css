@@ -1,0 +1,261 @@
+/* 基本樣式與變數 */
+:root {
+    --bg-color-light: #f0f0f0;
+    --text-color-light: #333;
+    --border-color-light: #ccc;
+    --cell-bg-light: #fff;
+    --cell-text-light: #333;
+    --cell-fixed-text-light: #000; /* 預設題目數字顏色 */
+    --highlight-bg-light: #e6f7ff;
+    --highlight-same-number-bg-light: #cceeff;
+    --highlight-error-bg-light: #ffe6e6;
+    --button-bg-light: #007bff;
+    --button-text-light: #fff;
+    --button-hover-bg-light: #0056b3;
+    --input-focus-border-light: #007bff;
+
+    --bg-color-dark: #2c2c2c;
+    --text-color-dark: #f0f0f0;
+    --border-color-dark: #555;
+    --cell-bg-dark: #3a3a3a;
+    --cell-text-dark: #f0f0f0;
+    --cell-fixed-text-dark: #fff; /* 預設題目數字顏色 */
+    --highlight-bg-dark: #4a5a6a;
+    --highlight-same-number-bg-dark: #3a6a8a;
+    --highlight-error-bg-dark: #6a4a4a;
+    --button-bg-dark: #007bff; /* 按鈕顏色在深色模式下也可以保持一致或調整 */
+    --button-text-dark: #fff;
+    --button-hover-bg-dark: #0056b3;
+    --input-focus-border-dark: #007bff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 改為 flex-start 以便內容多時滾動 */
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 20px; /* 給頂部一些空間 */
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+.container {
+    text-align: center;
+    background-color: var(--cell-bg-light);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: auto; /* 調整為自動寬度 */
+    max-width: 500px; /* 限制最大寬度 */
+}
+
+body.dark-mode .container {
+    background-color: var(--cell-bg-dark);
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--text-color-light);
+}
+body.dark-mode header h1 {
+    color: var(--text-color-dark);
+}
+
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+body.dark-mode #theme-toggle {
+    border-color: var(--border-color-dark);
+    color: var(--text-color-dark);
+}
+#theme-toggle:hover {
+    background-color: var(--border-color-light);
+}
+body.dark-mode #theme-toggle:hover {
+    background-color: var(--border-color-dark);
+}
+
+
+#sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(30px, 1fr)); /* 響應式格子 */
+    grid-template-rows: repeat(9, minmax(30px, 1fr));    /* 響應式格子 */
+    width: 100%; /* 佔滿容器寬度 */
+    max-width: 450px; /* 最大寬度 */
+    margin: 0 auto 20px auto; /* 居中 */
+    border: 2px solid var(--text-color-light);
+    aspect-ratio: 1 / 1; /* 保持正方形 */
+}
+
+body.dark-mode #sudoku-board {
+    border-color: var(--text-color-dark);
+}
+
+#sudoku-board input {
+    width: 100%;
+    height: 100%;
+    font-size: clamp(1em, 4vw, 1.5em); /* 響應式字體大小 */
+    text-align: center;
+    border: 1px solid var(--border-color-light);
+    box-sizing: border-box;
+    background-color: var(--cell-bg-light);
+    color: var(--cell-text-light);
+    caret-color: var(--cell-text-light);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    -moz-appearance: textfield; /* Firefox */
+}
+#sudoku-board input::-webkit-outer-spin-button,
+#sudoku-board input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+body.dark-mode #sudoku-board input {
+    border-color: var(--border-color-dark);
+    background-color: var(--cell-bg-dark);
+    color: var(--cell-text-dark);
+    caret-color: var(--cell-text-dark);
+}
+
+/* 3x3 子網格的粗邊框 */
+#sudoku-board input:nth-child(3n) {
+    border-right-width: 2px;
+    border-right-color: var(--text-color-light);
+}
+#sudoku-board input:nth-child(9n) { /* 修正最後一列的邊框 */
+    border-right-width: 1px;
+    border-right-color: var(--border-color-light);
+}
+body.dark-mode #sudoku-board input:nth-child(3n) {
+    border-right-color: var(--text-color-dark);
+}
+body.dark-mode #sudoku-board input:nth-child(9n) {
+    border-right-color: var(--border-color-dark);
+}
+
+
+/* 行的底部粗邊框 */
+/* 選擇第 19-27, 46-54 個 input 元素，這些是第3和第6行的結尾 */
+#sudoku-board input:nth-child(n+19):nth-child(-n+27),
+#sudoku-board input:nth-child(n+46):nth-child(-n+54) {
+    border-bottom-width: 2px;
+    border-bottom-color: var(--text-color-light);
+}
+body.dark-mode #sudoku-board input:nth-child(n+19):nth-child(-n+27),
+body.dark-mode #sudoku-board input:nth-child(n+46):nth-child(-n+54) {
+    border-bottom-color: var(--text-color-dark);
+}
+
+
+#sudoku-board input:focus {
+    outline: none;
+    border: 2px solid var(--input-focus-border-light) !important; /* 使用 !important 確保覆蓋 */
+    background-color: var(--highlight-bg-light) !important; /* 讓 focus 背景更明顯 */
+}
+body.dark-mode #sudoku-board input:focus {
+    border-color: var(--input-focus-border-dark) !important;
+    background-color: var(--highlight-bg-dark) !important;
+}
+
+
+#sudoku-board input.fixed { /* 預設題目數字 */
+    font-weight: bold;
+    background-color: var(--cell-bg-light); /* 與普通格子背景一致，但文字顏色不同 */
+    color: var(--cell-fixed-text-light);
+}
+body.dark-mode #sudoku-board input.fixed {
+    background-color: var(--cell-bg-dark);
+    color: var(--cell-fixed-text-dark);
+}
+
+/* 高亮樣式 */
+#sudoku-board input.highlight-related {
+    background-color: var(--highlight-bg-light);
+}
+body.dark-mode #sudoku-board input.highlight-related {
+    background-color: var(--highlight-bg-dark);
+}
+
+#sudoku-board input.highlight-same-number {
+    background-color: var(--highlight-same-number-bg-light);
+    font-weight: bold;
+}
+body.dark-mode #sudoku-board input.highlight-same-number {
+    background-color: var(--highlight-same-number-bg-dark);
+}
+
+#sudoku-board input.highlight-error {
+    background-color: var(--highlight-error-bg-light) !important;
+    color: red !important;
+}
+body.dark-mode #sudoku-board input.highlight-error {
+    background-color: var(--highlight-error-bg-dark) !important;
+}
+
+
+.controls {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* 允許按鈕換行 */
+}
+
+.controls button {
+    padding: 10px 15px;
+    font-size: 1em;
+    background-color: var(--button-bg-light);
+    color: var(--button-text-light);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px; /* 按鈕間距 */
+}
+
+body.dark-mode .controls button {
+    background-color: var(--button-bg-dark);
+    color: var(--button-text-dark);
+}
+
+.controls button:hover {
+    background-color: var(--button-hover-bg-light);
+}
+body.dark-mode .controls button:hover {
+    background-color: var(--button-hover-bg-dark);
+}
+
+
+#status-message {
+    margin-top: 15px;
+    font-size: 0.9em;
+    min-height: 1.2em; /* 避免跳動 */
+    color: var(--text-color-light);
+}
+body.dark-mode #status-message {
+    color: var(--text-color-dark);
+}
