@@ -34,7 +34,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start; /* 改為 flex-start 以便內容多時滾動 */
-    min-height: 100vh;
+    min-height: 98vh;
     margin: 0;
     padding-top: 20px; /* 給頂部一些空間 */
     background-color: var(--bg-color-light);
