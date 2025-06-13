@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沉浸式音樂視覺化盛宴</title>
+    <link rel="icon" href="./框架.svg" type="image/png">
+    <!-- 引入 Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- body 將用於控制面板狀態 -->
+<body>
+    <canvas id="visualizerCanvas"></canvas>
+
+    <div id="welcome-screen">
+        <h1><i class="fa-solid fa-atom"></i> 沉浸式音樂視覺化盛宴</h1>
+        <p>準備好「看見」你的音樂了嗎？<br>請在另一個分頁打開任何音訊來源，然後啟動引擎。</p>
+        <button id="startButton">🚀 啟動引擎</button>
+    </div>
+
+    <!-- 設定面板 -->
+    <div id="settings-panel">
+        <div class="settings-header">
+            <h2><i class="fa-solid fa-atom"></i> 控制台</h2>
+            <!-- 按鈕改為關閉圖標 -->
+            <button id="hide-panel-btn" title="隱藏面板">&times;</button>
+        </div>
+        
+        <div class="setting-item">
+            <label for="style-select">視覺風格</label>
+            <select id="style-select">
+                <option value="radial-bars" selected>放射狀聲譜</option>
+                <option value="rings">能量環</option>
+                <option value="oscilloscope">示波器</option>
+            </select>
+        </div>
+
+        <div class="setting-item">
+            <label for="color-select">色彩配置</label>
+            <select id="color-select">
+                <option value="neon-dream" selected>霓虹幻夢</option>
+                <option value="cyberpunk">賽博龐克</option> 
+                <option value="lava-fire">熔岩之火</option>
+                <option value="ice-cold">極地寒冰</option>
+                <option value="rainbow">經典彩虹</option>
+            </select>
+        </div>
+
+        <div class="setting-item checkbox-item">
+            <input type="checkbox" id="bass-shake-toggle" checked>
+            <label for="bass-shake-toggle">低音震動</label>
+        </div>
+
+        <div class="setting-item">
+            <label for="detail-density">細節密度</label>
+            <input type="range" id="detail-density" min="100" max="500" value="250" step="10">
+        </div>
+
+        <div class="setting-item">
+            <label for="shape-size">線條/圖形大小</label>
+            <input type="range" id="shape-size" min="0.5" max="5" value="1.5" step="0.1">
+        </div>
+    </div>
+
+    <!-- 新增的「顯示面板」按鈕 -->
+    <button id="show-panel-btn" title="顯示面板">›</button>
+
+    <script src="visualizer.js"></script>
+</body>
+</html>

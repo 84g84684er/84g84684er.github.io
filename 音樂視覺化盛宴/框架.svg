@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip_path_1">
+      <rect width="17" height="13" />
+    </clipPath>
+    <style type="text/css">@import url(http://fonts.googleapis.com/css?family=Segoe+UI+Emoji</style>
+  </defs>
+  <g clip-path="url(#clip_path_1)">
+    <text dx="0" dy="10.298" fill="#000000" font-family="Segoe UI Emoji" font-size="12" font-weight="normal" transform="translate(0 -0)">⚛️</text>
+  </g>
+</svg>
