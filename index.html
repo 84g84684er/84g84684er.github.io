@@ -40,9 +40,7 @@
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
-        }
-
-        .custom-button {
+        }        .custom-button {
             background: linear-gradient(45deg, #2b2b2b, #3d3d3d);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 12px;
@@ -53,6 +51,15 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+            display: block;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .custom-button::before {
@@ -75,25 +82,8 @@
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
             border-color: rgba(255,255,255,0.2);
-        }
-
-        .custom-button:hover::before {
+        }        .custom-button:hover::before {
             left: 100%;
-        }
-
-        .custom-button a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 18px;
-            font-family: 'Arial', sans-serif;
-            display: block;
-            width: 100%;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
         }
 
         @keyframes glow {
@@ -108,11 +98,11 @@
         }
     </style>
 </head>
-<body>
+<body>    
     <div class="button-container">
-        <button class="custom-button"><a href="/finalv3.1/pages/index.html">期末網頁</a></button>
-        <button class="custom-button"><a href="sudo/index.html">數獨解算器</a></button>
-        <button class="custom-button"><a href="音樂視覺化盛宴/index.html">音樂視覺化盛宴</a></button>
+        <a href="/final/pages/index.html" class="custom-button">期末網頁</a>
+        <a href="sudo/index.html" class="custom-button">數獨解算器</a>
+        <a href="音樂視覺化盛宴/index.html" class="custom-button">音樂視覺化盛宴</a>
     </div>
 </body>
 </html>
