@@ -27,6 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 點擊數獨板外區域時清除高亮（可選功能）
+    document.addEventListener('click', (event) => {
+        // 檢查點擊是否在數獨板內
+        if (!boardElement.contains(event.target)) {
+            // 只有當點擊在數獨板外時才清除高亮
+            // 這樣可以讓用戶主動清除高亮，但不會在切換到其他視窗時清除
+            // 如果您不希望這個行為，可以註解掉下面這行
+            clearHighlights();
+        }
+    });
+
     // 生成數獨網格
     function createBoard() {
         boardElement.innerHTML = ''; // 清空舊的
@@ -41,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.dataset.col = j;
                 input.addEventListener('input', handleInput);
                 input.addEventListener('focus', handleFocus);
-                input.addEventListener('blur', clearHighlights); // 失去焦點時清除高亮
+                // 移除 blur 事件監聽器，讓高亮保持
                 boardElement.appendChild(input);
                 cells.push(input);
             }
