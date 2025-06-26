@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒水遊戲解算器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>倒水遊戲解算器</h1>
+            <p class="subtitle">輸入謎題佈局，立即獲得最優解！</p>
+        </header>
+
+        <section class="card">
+            <h2>1. 設定版面</h2>
+            <div class="control-group">
+                <label for="row-count">列數：</label>
+                <input type="number" id="row-count" value="1" min="1">
+                <button id="btn-generate-row-setup">設定每列杯數</button>
+            </div>
+            <div id="row-setup-container" class="sub-panel" style="display: none;"></div>
+        </section>
+
+        <section class="card" id="initial-state-setup" style="display: none;">
+            <h2>2. 設定初始狀態</h2>
+            <p>請由上至下填入水的顏色編號（0 或留空代表空格）。</p>
+            <div id="setup-grid"></div>
+            <button id="btn-solve">
+                <span class="icon">🔍</span>
+                開始解算
+            </button>
+        </section>
+
+        <section class="card" id="solution-output" style="display: none;">
+            <h2>3. 解算結果</h2>
+            <div id="solver-status">
+                <!-- 載入動畫將顯示在此處 -->
+            </div>
+            
+            <div id="game-board"></div>
+
+            <div class="step-controls">
+                <button id="btn-prev-step" disabled>
+                    <span class="icon">◀</span>
+                    上一步
+                </button>
+                <span id="step-info">步驟 0 / 0</span>
+                <button id="btn-next-step" disabled>
+                    下一步
+                    <span class="icon">▶</span>
+                </button>
+            </div>
+            <div id="step-description">請點擊「開始解算」</div>
+
+            <div class="full-solution">
+                <button id="btn-toggle-full-solution">
+                    <span class="icon" id="toggle-icon">📄</span>
+                    顯示完整解法
+                </button>
+                <div id="full-solution-text" style="display: none;"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
