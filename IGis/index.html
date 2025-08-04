@@ -17,7 +17,7 @@
             --border-color-hover: #6f6f72;
             --text-primary: #f0f0f0;
             --text-secondary: #aaaaaa;
-            --accent: #6c63ff; /* A modern accent color */
+            --accent: #6c63ff;
         }
         
         body {
@@ -72,21 +72,11 @@
             font-weight: 500;
             cursor: pointer;
             transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+            white-space: nowrap; /* Prevent button text from wrapping */
         }
-        .btn:hover {
-            background-color: var(--bg-control-hover);
-            border-color: var(--border-color-hover);
-        }
-        .btn:active {
-            transform: scale(0.97);
-        }
-        .btn:disabled {
-            background-color: #2a2a2e;
-            border-color: #444;
-            color: #777;
-            cursor: not-allowed;
-            transform: none;
-        }
+        .btn:hover { background-color: var(--bg-control-hover); border-color: var(--border-color-hover); }
+        .btn:active { transform: scale(0.97); }
+        .btn:disabled { background-color: #2a2a2e; border-color: #444; color: #777; cursor: not-allowed; transform: none; }
         .btn-small { padding: 6px 14px; font-size: 14px; margin-left: 8px; }
         .btn-secondary { background-color: transparent; border: 1px solid var(--accent); color: var(--accent); }
         .btn-secondary:hover { background-color: rgba(108, 99, 255, 0.1); }
@@ -95,53 +85,33 @@
 
         .input-label-group { display: flex; align-items: center; gap: 12px; color: var(--text-secondary); }
         
-        /* --- NEW: Custom Color Picker --- */
-        .color-picker-wrapper {
-            position: relative;
-            width: 36px;
-            height: 36px;
-        }
-        #color-preview {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px solid #555;
-            box-sizing: border-box;
-            transition: border-color 0.2s ease;
-        }
-        .color-picker-wrapper:hover #color-preview {
-            border-color: #777;
-        }
-        #fill-color-input {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-        }
+        .color-picker-wrapper { position: relative; width: 36px; height: 36px; }
+        #color-preview { width: 100%; height: 100%; border-radius: 50%; border: 2px solid #555; box-sizing: border-box; transition: border-color 0.2s ease; }
+        .color-picker-wrapper:hover #color-preview { border-color: #777; }
+        #fill-color-input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
 
-        .bottom-controls {
+        /* --- MODIFIED: Combined controls container --- */
+        #adjustments-container {
             width: 100%;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             gap: 20px;
             margin-top: 15px;
         }
-        .slider-container { display: flex; align-items: center; gap: 10px; color: var(--text-secondary); flex-grow: 1; }
-        #size-slider {
+        .slider-container { display: flex; align-items: center; gap: 10px; color: var(--text-secondary); flex-grow: 1; min-width: 180px; }
+        #size-slider, #crop-slider {
             -webkit-appearance: none; appearance: none;
             width: 100%; height: 6px; background: #444;
             outline: none; border-radius: 3px;
         }
-        #size-slider::-webkit-slider-thumb {
+        #size-slider::-webkit-slider-thumb, #crop-slider::-webkit-slider-thumb {
             -webkit-appearance: none; appearance: none;
             width: 20px; height: 20px; background: var(--accent);
             cursor: pointer; border-radius: 50%;
         }
-        #size-slider::-moz-range-thumb {
+        #size-slider::-moz-range-thumb, #crop-slider::-moz-range-thumb {
             width: 20px; height: 20px; background: var(--accent);
             cursor: pointer; border-radius: 50%; border: none;
         }
@@ -152,7 +122,6 @@
         .crop-wrapper {
             aspect-ratio: 4 / 5; display: flex; justify-content: center; align-items: center;
             transition: aspect-ratio 0.3s ease; overflow: hidden;
-            /* border-radius: 4px; -- REMOVED */
         }
         .preview-cropped .crop-wrapper { aspect-ratio: 3 / 4; }
         .crop-wrapper img { width: 100%; height: 100%; object-fit: cover; }
@@ -178,23 +147,27 @@
             <div class="control-group">
                 <div class="input-label-group">
                     <label>填充顏色：</label>
-                    <!-- NEW HTML structure for color picker -->
                     <div class="color-picker-wrapper">
                          <div id="color-preview"></div>
                          <input type="color" id="fill-color-input" value="#000000">
                     </div>
                     <button id="apply-color-btn" class="btn btn-small">套用</button>
                 </div>
+                 <!-- MODIFIED: Rotate button moved here -->
+                 <button class="btn" id="rotate-btn" style="display: none;">旋轉圖片 ↻</button>
             </div>
-            <div id="image-options" style="display: none; width: 100%;">
-                 <button class="btn" id="rotate-btn" style="width: 100%; margin-bottom: 15px;">旋轉圖片 ↻</button>
-                 <div class="bottom-controls">
-                    <div class="slider-container">
-                        <label for="size-slider">大小: <span id="size-label">50%</span></label>
-                        <input type="range" id="size-slider" min="25" max="100" value="50">
-                    </div>
-                     <button class="btn btn-secondary" id="preview-toggle-btn">預覽裁切</button>
+            
+            <!-- MODIFIED: New container for all adjustments -->
+            <div id="adjustments-container" style="display: none;">
+                 <div id="crop-slider-container" class="slider-container" style="display: none;">
+                    <label for="crop-slider">裁切位置</label>
+                    <input type="range" id="crop-slider" value="0">
+                 </div>
+                <div class="slider-container">
+                    <label for="size-slider">大小: <span id="size-label">50%</span></label>
+                    <input type="range" id="size-slider" min="25" max="100" value="50">
                 </div>
+                 <button class="btn btn-secondary" id="preview-toggle-btn">預覽裁切</button>
             </div>
         </div>
         <p id="info" class="info-text"></p>
@@ -207,10 +180,10 @@
     <script>
         const imageInput = document.getElementById('image-input');
         const fillColorInput = document.getElementById('fill-color-input');
-        const colorPreview = document.getElementById('color-preview'); // Get the new preview div
+        const colorPreview = document.getElementById('color-preview');
         const applyColorBtn = document.getElementById('apply-color-btn');
         const rotateBtn = document.getElementById('rotate-btn');
-        const imageOptions = document.getElementById('image-options');
+        const adjustmentsContainer = document.getElementById('adjustments-container'); // MODIFIED
         const sizeSlider = document.getElementById('size-slider');
         const sizeLabel = document.getElementById('size-label');
         const previewToggleBtn = document.getElementById('preview-toggle-btn');
@@ -218,16 +191,16 @@
         const infoText = document.getElementById('info');
         const downloadAllContainer = document.getElementById('download-all-container');
         const downloadAllBtn = document.getElementById('download-all-btn');
+        const cropSlider = document.getElementById('crop-slider');
+        const cropSliderContainer = document.getElementById('crop-slider-container');
         
         let currentImage = null;
         let originalFileName = 'image';
         let currentRotation = 0;
         const COLS = 3;
 
-        // --- Initialize Color Preview ---
         colorPreview.style.backgroundColor = fillColorInput.value;
 
-        // --- Event Listeners ---
         imageInput.addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (!file) return;
@@ -238,31 +211,30 @@
                 img.onload = () => {
                     currentImage = img;
                     currentRotation = 0;
-                    imageOptions.style.display = 'block';
+                    // MODIFIED: Show new containers
+                    rotateBtn.style.display = 'inline-block';
+                    adjustmentsContainer.style.display = 'flex';
                     downloadAllContainer.style.display = 'block';
                     infoText.style.display = 'none';
-                    splitImage();
+                    splitImage(true);
                 };
                 img.src = e.target.result;
             };
             reader.readAsDataURL(file);
         });
         
-        // NEW: Update preview div when color changes
-        fillColorInput.addEventListener('input', (e) => {
-            colorPreview.style.backgroundColor = e.target.value;
-        });
-
+        fillColorInput.addEventListener('input', (e) => { colorPreview.style.backgroundColor = e.target.value; });
         applyColorBtn.addEventListener('click', () => splitImage());
         rotateBtn.addEventListener('click', () => {
             currentRotation = (currentRotation + 90) % 360;
-            splitImage();
+            splitImage(true);
         });
         sizeSlider.addEventListener('input', () => {
             const newSize = sizeSlider.value;
             sizeLabel.textContent = `${newSize}%`;
             previewContainer.style.width = `${newSize}%`;
         });
+        cropSlider.addEventListener('input', () => splitImage());
         previewToggleBtn.addEventListener('click', () => {
             previewContainer.classList.toggle('preview-cropped');
             const isCropped = previewContainer.classList.contains('preview-cropped');
@@ -286,7 +258,7 @@
             ctx.drawImage(currentImage, -w / 2, -h / 2);
             return canvas;
         }
-
+        
         async function processImageSlices(onSlice) {
             const rotatedImage = getRotatedImage();
             if (!rotatedImage) return;
@@ -300,7 +272,10 @@
                 const sliceHeight = rotatedImage.height;
                 const slice34_Width = sliceHeight * TARGET_SLICE_ASPECT;
                 const total34_Width = slice34_Width * COLS;
-                const sx_offset = (rotatedImage.width - total34_Width) / 2;
+                let sx_offset = (rotatedImage.width - total34_Width) / 2;
+                if (rotatedImage.width > total34_Width) {
+                    sx_offset = parseFloat(cropSlider.value);
+                }
 
                 for (let c = 0; c < COLS; c++) {
                     const finalCanvas = document.createElement('canvas');
@@ -315,22 +290,24 @@
                     await onSlice(finalCanvas, c + 1);
                 }
             } else {
-                const rows = Math.max(1, Math.round((rotatedImage.height / rotatedImage.width) * (COLS * 4 / 5)));
+                const contentWidth = rotatedImage.width / COLS;
+                const contentHeight = contentWidth * (4 / 3);
+                const rows = Math.max(1, Math.ceil(rotatedImage.height / contentHeight));
+                const totalGridHeight = rows * contentHeight;
+                const sy_offset = (rotatedImage.height - totalGridHeight) / 2;
                 let imageNumber = 1;
                 for (let r = 0; r < rows; r++) {
                     for (let c = 0; c < COLS; c++) {
-                        const sliceWidth = rotatedImage.width / COLS;
-                        const sliceHeight = rotatedImage.height / rows;
                         const finalCanvas = document.createElement('canvas');
-                        finalCanvas.height = sliceHeight;
-                        finalCanvas.width = sliceHeight * (4 / 5);
+                        finalCanvas.height = contentHeight;
+                        finalCanvas.width = contentHeight * (4 / 5);
                         const ctx = finalCanvas.getContext('2d');
                         ctx.fillStyle = fillColor;
                         ctx.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
-                        const sx = c * sliceWidth;
-                        const sy = r * sliceHeight;
-                        const dx = (finalCanvas.width - sliceWidth) / 2;
-                        ctx.drawImage(rotatedImage, sx, sy, sliceWidth, sliceHeight, dx, 0, sliceWidth, sliceHeight);
+                        const sx = c * contentWidth;
+                        const sy = r * contentHeight + sy_offset;
+                        const dx = (finalCanvas.width - contentWidth) / 2;
+                        ctx.drawImage(rotatedImage, sx, sy, contentWidth, contentHeight, dx, 0, contentWidth, contentHeight);
                         await onSlice(finalCanvas, imageNumber);
                         imageNumber++;
                     }
@@ -338,8 +315,25 @@
             }
         }
 
-        async function splitImage() {
+        async function splitImage(isNewImageOrRotation = false) {
             if (!currentImage) return;
+            
+            const rotatedImage = getRotatedImage();
+            const isLandscape = rotatedImage.width > rotatedImage.height;
+            const totalCropWidth = (rotatedImage.height * (3/4)) * COLS;
+            const isWiderThanCrop = isLandscape && rotatedImage.width > totalCropWidth;
+            
+            if (isWiderThanCrop) {
+                cropSliderContainer.style.display = 'flex';
+                const maxOffset = rotatedImage.width - totalCropWidth;
+                cropSlider.max = maxOffset;
+                if (isNewImageOrRotation) {
+                    cropSlider.value = maxOffset / 2;
+                }
+            } else {
+                cropSliderContainer.style.display = 'none';
+            }
+
             previewContainer.innerHTML = '';
             previewContainer.style.width = `${sizeSlider.value}%`;
 
@@ -396,6 +390,4 @@
     </script>
 
 </body>
-
 </html>
-
