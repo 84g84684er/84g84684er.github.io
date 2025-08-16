@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // *** 新增：處理鍵盤事件以阻止無效字符 ***
     function handleKeyDown(event) {
         // 阻止 '0', '+', '-', '.', 'e' 等無效按鍵的輸入
-        if (['+', '-', '.'].includes(event.key)) {
+        if (['+', '-', '.', 'e'].includes(event.key)) {
             event.preventDefault();
         }
     }
