@@ -29,11 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 點擊數獨板外區域時清除高亮（可選功能）
     document.addEventListener('click', (event) => {
-        // 檢查點擊是否在數獨板內
         if (!boardElement.contains(event.target)) {
-            // 只有當點擊在數獨板外時才清除高亮
-            // 這樣可以讓用戶主動清除高亮，但不會在切換到其他視窗時清除
-            // 如果您不希望這個行為，可以註解掉下面這行
             clearHighlights();
         }
     });
@@ -50,12 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.max = '9';
                 input.dataset.row = i;
                 input.dataset.col = j;
+                // *** 新增：添加 keydown 事件監聽器 ***
+                input.addEventListener('keydown', handleKeyDown);
                 input.addEventListener('input', handleInput);
                 input.addEventListener('focus', handleFocus);
-                // 移除 blur 事件監聽器，讓高亮保持
                 boardElement.appendChild(input);
                 cells.push(input);
             }
+        }
+    }
+
+    // *** 新增：處理鍵盤事件以阻止無效字符 ***
+    function handleKeyDown(event) {
+        // 阻止 '0', '+', '-', '.', 'e' 等無效按鍵的輸入
+        if (['+', '-', '.'].includes(event.key)) {
+            event.preventDefault();
         }
     }
 
@@ -69,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // 這個檢查仍然有用，可以處理貼上無效內容的情況
         if (!/^[1-9]$/.test(value)) {
             input.value = ''; // 清除非法輸入
             return;
@@ -81,11 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         highlightRelatedCells(input);
         highlightSameNumbers(input.value);
-        
-        // 檢查衝突 (可選, 也可以只在解算時檢查)
-        // if (!isValidPlacement(getCurrentBoard(), parseInt(input.dataset.row), parseInt(input.dataset.col), parseInt(input.value))) {
-        //     input.classList.add('highlight-error');
-        // }
     }
 
     function handleFocus(event) {
@@ -115,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (r === row || c === col ||
                 (r >= boxRowStart && r < boxRowStart + 3 && c >= boxColStart && c < boxColStart + 3)) {
-                if (cell !== focusedInput) { // 不高亮自己，除非想和其他高亮類型區分
+                if (cell !== focusedInput) {
                     cell.classList.add('highlight-related');
                 }
             }
@@ -182,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     exampleButton.addEventListener('click', () => {
-        // 簡單示例 (0 代表空格)
         const exampleBoard = [
             [5, 3, 0, 0, 7, 0, 0, 0, 0],
             [6, 0, 0, 1, 9, 5, 0, 0, 0],
@@ -200,28 +200,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     solveButton.addEventListener('click', () => {
         const board = getCurrentBoard();
-        // 清除之前的錯誤高亮
         cells.forEach(cell => cell.classList.remove('highlight-error'));
 
-        // 驗證初始盤面是否有衝突
         for (let r = 0; r < N; r++) {
             for (let c = 0; c < N; c++) {
                 if (board[r][c] !== 0) {
                     const num = board[r][c];
-                    board[r][c] = 0; // 暫時移除以正確驗證
+                    board[r][c] = 0; 
                     if (!isValidPlacement(board, r, c, num)) {
                         cells[r * N + c].classList.add('highlight-error');
                         statusMessageElement.textContent = '初始盤面有衝突，無法解算。';
-                        board[r][c] = num; // 恢復
+                        board[r][c] = num; 
                         return;
                     }
-                    board[r][c] = num; // 恢復
+                    board[r][c] = num;
                 }
             }
         }
         
         statusMessageElement.textContent = '正在解算...';
-        // 使用 setTimeout 讓 "正在解算..." 訊息能先渲染出來
         setTimeout(() => {
             if (solveSudoku(board)) {
                 setBoardOnUI(board);
@@ -229,14 +226,14 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 statusMessageElement.textContent = '此數獨無解或初始盤面錯誤。';
             }
-        }, 10); // 短暫延遲
+        }, 10);
     });
 
     // --- 數獨解算邏輯 (回溯法) ---
     function solveSudoku(board) {
         const emptySpot = findEmptySpot(board);
         if (!emptySpot) {
-            return true; // 沒有空格，已解決
+            return true;
         }
         const [row, col] = emptySpot;
 
@@ -246,10 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (solveSudoku(board)) {
                     return true;
                 }
-                board[row][col] = 0; // 回溯
+                board[row][col] = 0;
             }
         }
-        return false; // 沒有數字適合這個位置
+        return false;
     }
 
     function findEmptySpot(board) {
