@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>關閉系統自動更新設定教學(Win 10 / Win 11) </title>
+
+<link rel="stylesheet" href="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/combine-zh-tw.css" type="text/css">
+
+<body class="page_mobileptdetail  ">
+
+	<div class="module-inner">
+	<section class="mb">
+		<div class="mpgtitle">
+		<h2 class="hdline">關閉系統自動更新設定教學(Win 10 / Win 11)</h2>
+		</div>
+			
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse; width:100.0%" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#235789;">　步驟 1　</span></span></td>
+			<td style="padding:0cm 7px; background-color:#ffffff; vertical-align:top">▼首先快捷鍵按下『<strong>Windows 鍵</strong>』＋『<strong>R 鍵</strong>』，打開『<strong>執行視窗</strong>』並輸入『<strong>regedit</strong>』按下『<strong>確定</strong>』</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left: 80px;"><img alt="" height="259" src="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/win_uu1.jpg" style="margin-bottom: 50px; margin-top: 10px;" width="500"></p>
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse; width:100.0%" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#235789;">　步驟 2　</span></span></td>
+			<td style="padding: 0cm 7px; background-color: rgb(255, 255, 255); vertical-align: top;">▼跳出視窗，此時請按下『<strong>是</strong>』來執行『<strong>登錄編輯程式</strong>』。</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left: 80px;"><img alt="" height="335" src="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/win_uu2.jpg" style="margin-bottom: 50px; margin-top: 10px;" width="500"></p>
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse;width:100%;" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#235789;">　步驟 3　</span></span></td>
+			<td style="padding: 0cm 7px; background-color: rgb(255, 255, 255); vertical-align: top;">
+			<p>▼依序點選左邊的樹狀結構，路徑如下：</p>
+
+			<p><strong>電腦\HKEY_LOCAL_MACHINE\SOFTWARE\</strong></p>
+
+			<p><strong>Microsoft\WindowsUpdate\UX\Settings</strong></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left: 80px;"><strong><img alt="" height="388" src="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/win_uu3.jpg" style="margin-bottom: 50px; margin-top: 10px; border-width: 1px; border-style: solid;" width="800"></strong></p>
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse; width:100.0%" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#235789;">　步驟 4　</span></span></td>
+			<td style="padding:0cm 7px; background-color:#ffffff; vertical-align:top">▼在右邊空白處按下『<strong>滑鼠右鍵</strong>』打開選單，選取『<strong>新增</strong>』，並選取『<strong>DWORD(32-位元)值</strong>』。</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left: 80px;"><img alt="" height="610" src="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/win_uu4.jpg" style="margin-bottom: 50px; margin-top: 10px; border-width: 1px; border-style: solid;" width="800"></p>
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse; width:100.0%" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#235789;">　步驟 5　</span></span></td>
+			<td style="padding:0cm 7px; background-color:#ffffff; vertical-align:top">▼新增的檔案名稱請命名為『<strong>FlightSettingsMaxPauseDays</strong>』</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left: 80px;"><img alt="" height="424" src="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/win_uu5.jpg" style="margin-bottom: 50px; margin-top: 10px; border-width: 1px; border-style: solid;" width="800"></p>
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse; width:100.0%" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#235789;">　步驟 6　</span></span></td>
+			<td style="padding:0cm 7px; background-color:#ffffff; vertical-align:top">▼用『<strong>滑鼠左鍵連點兩下</strong>』剛剛新增的數值，打開編輯視窗，數值資料請輸入『<strong>36500</strong>』，底數選擇『<strong>十進位</strong>』，按下『<strong>確定</strong>』存檔。</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left: 80px;"><img alt="" height="616" src="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/win_uu6.jpg" style="margin-bottom: 50px; margin-top: 10px; border-width: 1px; border-style: solid;" width="800"></p>
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse; width:100.0%" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#235789;">　步驟 7　</span></span></td>
+			<td style="padding:0cm 7px; background-color:#ffffff; vertical-align:top">▼接著至左下角點開『<strong>開始</strong>』功能表，點選『<strong>設定</strong>』。</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left: 80px;"><img alt="" height="600" src="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/win_uu7-1.jpg" style="margin-bottom: 50px; margin-top: 10px;" width="387"></p>
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse; width:100.0%" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#235789;">　步驟 8　</span></span></td>
+			<td style="padding:0cm 7px; background-color:#ffffff; vertical-align:top">▼進入Windows設定後選取『<strong>更新與安全性</strong>』。</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left: 80px;"><img alt="" height="468" src="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/win_uu7-2.jpg" style="margin-bottom: 50px; margin-top: 10px; border-width: 1px; border-style: solid;" width="800"></p>
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse; width:100.0%" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#235789;">　步驟 9　</span></span></td>
+			<td style="padding:0cm 7px; background-color:#ffffff; vertical-align:top">▼點選下列的『<strong>進階選項</strong>』。</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left: 80px;"><img alt="" height="553" src="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/win_uu8.jpg" style="margin-bottom: 50px; margin-top: 10px; border-width: 1px; border-style: solid;" width="800"></p>
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse; width:100.0%" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#235789;">　步驟 10　</span></span></td>
+			<td style="padding:0cm 7px; background-color:#ffffff; vertical-align:top">▼在『<strong>暫停更新</strong>』的項目中，點開『<strong>選取日期</strong>』的下拉式選單，往下選擇最後一個日期(100年後)。</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left: 80px;"><img alt="" height="693" src="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/win_uu9.jpg" style="margin-bottom: 50px; margin-top: 10px; border-width: 1px; border-style: solid;" width="600"></p>
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse; width:100.0%" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#235789;">　步驟 11　</span></span></td>
+			<td style="padding:0cm 7px; background-color:#ffffff; vertical-align:top">▼回到更新與安全性頁面， 上方便會顯示Windows Update 更新已經暫停直到 21XX年。</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left: 80px;"><img alt="" height="521" src="./關閉系統自動更新設定教學(Win 10 _ Win 11)_files/win_uu10.jpg" style="margin-bottom: 50px; margin-top: 10px; border-width: 1px; border-style: solid;" width="800"></p>
+
+<table class="MsoTable15Plain4" style="border-collapse:collapse; width:100.0%" width="100%">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top; width: 80px;"><span style="color:#ffffff;"><span style="background-color:#ec8273;">　備註　</span></span></td>
+			<td style="padding:0cm 7px; background-color:#ffffff; vertical-align:top">若想更新的時候只要手動按下『<strong>繼續更新</strong>』即可，但更新完畢想停止更新，則需要回到進階選項，重新選擇暫停更新日期。</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</body>
+</html>
