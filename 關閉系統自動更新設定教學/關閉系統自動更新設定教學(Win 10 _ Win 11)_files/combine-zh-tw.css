@@ -4,6 +4,7 @@ html, body{
     display: flex;
     justify-content: center;
     min-height: 100vh;
+    background-color:black
 }
 div{
     display: flex;
@@ -17,4 +18,10 @@ div{
     text-align: center;
     max-width: 1200px;
     width: 100%;
+}
+td{
+    color:#8d8d8d;
+}
+span{
+    color:#8d8d8d;
 }
